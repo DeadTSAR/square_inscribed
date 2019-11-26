@@ -27,20 +27,11 @@ class point
 public:
 	point() {};
 
-	/*point(double x = 0, double y = 0)
-	{
-		
-		this->x = x;
-		this->y = y;
-		std::cout << "zadana to4ka x: " << this->x << " y: " << this->y << endl;
-	};*/
-
 	void SetPoint_X(double x) { this->x = x; };
 	void SetPoint_Y(double y) { this->y = y; };
 
 	double GetPoint_x() { return x; };
 	double GetPoint_y() { return y; };
-
 };
 
 class orbit
@@ -48,38 +39,22 @@ class orbit
 	double x;
 	double y;
 	double R;
-	
+	friend point;
 	friend cqare;
 public:
-	friend point;
 	
-	orbit(double x = 0, double y = 0, double R=0) {
-		
-		/*this->x = x;
-		this->y = y;*/
+	
+	orbit(double x = 0, double y = 0, double R=0)
+	{
+		this->x = x;
+		this->y = y;
 		this->R = R;
 	}
 	void printOrb();
-	double GetPointORB_x(); { return x; };
-	double GetPointORB_y(); { return y; };
-
-	/* point getPoint(point &xy)
-{
-	this->x = x;
-	this->y = y;
-}*/
-
-	/*orbit(point & position , double R)
-	{
-	
-		
-		this->R=R;
-		std::cout << "zadan orbit " << endl;
-		std::cout << "x " << x;
-		std::cout << "y " << y;
-		std::cout << "R " << R << endl;
-	};
-	*/
+	double GetPointORB_x();
+	double GetPointORB_y();
+	void SetPointORB_X(double x);
+	void SetPointORB_Y(double y);
 };
 
 class cqare
@@ -90,52 +65,52 @@ class cqare
 public:
 	cqare(double w=0)
 	{
-		
 		this->w = h = w;// h = w;// у квадрата 4 стороны равны. w^2; d=кореньКВ2 * а;
 		std::cout << "zadan cqare " << w << endl;
 	};
 	double cqareDiag(double w);
-
 };
 
-//point::point()
-//{
-//}
-//
-//point::~point()
-//{
-//}
-//
-//forAngl::forAngl()
-//{
-//}
-//
-//forAngl::~forAngl()
-//{
-//}
-//
-//orbit::orbit()
-//{
-//}
-//
-//orbit::~orbit()
-//{
-//}
 
 int main() { // задать АВ ВС СД ДА - точки (А1.А2.)
 	setlocale(LC_ALL, "rus");
 	double x, y, R0, r1, w;
-
-
-	std::cout << "задайте входную точку (x,y) для круга и квадрата" << endl;
-	std::cin >> x;
-		std::cin >> y;
+	
+	std::cout << "задайте входную точку  (x,y) для круга и квадрата" << endl;
+	std::cout << endl;
+	std::cout << "x: "; std::cin >> x;
+	std::cout << "y: "; std::cin >> y;
+	std::cout << endl;
 	point x1;
 	x1.SetPoint_X(x);
 	x1.SetPoint_Y(y);
 
-	
-	if ((x1.GetPoint_x()) > x1.GetPoint_y())
+		point cqareAxy;
+		cqareAxy.SetPoint_X(x - x);
+		cqareAxy.SetPoint_Y(y - y);
+		cout <<"cqareAx "<< cqareAxy.GetPoint_x();
+		cout <<" cqareAy "<< cqareAxy.GetPoint_y() << endl;
+		std::cout << endl;
+		point cqareBxy;
+		cqareBxy.SetPoint_X (x + x);
+		cqareBxy.SetPoint_Y(y - y);
+		cout <<"cqareBx "<< cqareBxy.GetPoint_x();
+		cout <<" cqareBy "<< cqareBxy.GetPoint_y() << endl;
+		std::cout << endl;
+		point cqareCxy;
+		cqareCxy.SetPoint_X (x + x);
+		cqareCxy.SetPoint_Y (y + y);
+		cout <<"cqareCx "<< cqareCxy.GetPoint_x();
+		cout <<" cqareCy "<< cqareCxy.GetPoint_y() << endl;
+		std::cout << endl;
+		point cqareDxy;
+		cqareDxy.SetPoint_X (x - x);
+		cqareDxy.SetPoint_Y (y + y);
+		cout <<"cqareDx "<< cqareDxy.GetPoint_x() ;
+		cout <<" cqareDy "<< cqareDxy.GetPoint_y() << endl;
+		std::cout << endl;
+
+		if(x>y)
 	{
 		r1 = abs(x1.GetPoint_x());
 		w = abs(x1.GetPoint_x()) * 2;
@@ -149,34 +124,24 @@ int main() { // задать АВ ВС СД ДА - точки (А1.А2.)
 	cqare cq(w);
 	R0 = (cq.cqareDiag(w)/2);
 
-	//double x11 = x1.GetPoint_X;
-	//double y11 = x1.GetPoint_Y;
-
-
 	orbit o1(x1.GetPoint_x(), x1.GetPoint_y(),  R0);
+	
 	o1.printOrb();
 	std::cout << "окружность описывает квадрат R = " << R0 << endl;
-	
-	
+		
 	orbit o2(x1.GetPoint_x(), x1.GetPoint_y(), r1);
 	o2.printOrb();
 	std::cout << "окружность вписанна в квадрат r1 = " << r1 << endl;
-
 	
-
 	std::system("pause");
 	return 0;
 }
 
 double cqare::cqareDiag(double w)
 {
-	double d = sqrt(2)*w;
-	std::cout << " cqrt " << d << endl;
-
-	//d = (sqrt(2)*w)/2;
-	//std::cout << "1/2 cqrt " << d << endl;
-			
-	return d;
+	this->w = sqrt(2)*w;
+	std::cout << " cqrt " << this->w << endl;
+	return this->w;
 }
 
 void orbit::printOrb()
@@ -185,6 +150,22 @@ void orbit::printOrb()
 	std::cout << "x: " << GetPointORB_x() << endl;
 	std::cout << "y: " << GetPointORB_y() << endl;
 	std::cout << "R/r: " << R << endl;
+}
+double orbit::GetPointORB_x()
+{
+	return x;
+}
+double orbit::GetPointORB_y()
+{
+	return y;
+}
+void orbit::SetPointORB_X(double x)
+{
+	this->x = x;
+}
+void orbit::SetPointORB_Y(double y)
+{
+	this->y = y;
 }
 //Окружность описанная вокруг квадрата
 //Определение.Кругом описанным вокруг квадрата называется круг проходящий 

@@ -84,32 +84,32 @@ int main() { // задать АВ ВС СД ДА - точки (А1.А2.)
 	point x1;
 	x1.SetPoint_X(x);
 	x1.SetPoint_Y(y);
-
+	{
 		point cqareAxy;
 		cqareAxy.SetPoint_X(x - x);
 		cqareAxy.SetPoint_Y(y - y);
-		cout <<"cqareAx "<< cqareAxy.GetPoint_x();
-		cout <<" cqareAy "<< cqareAxy.GetPoint_y() << endl;
+		cout << "cqareAx " << cqareAxy.GetPoint_x();
+		cout << " cqareAy " << cqareAxy.GetPoint_y() << endl;
 		std::cout << endl;
 		point cqareBxy;
-		cqareBxy.SetPoint_X (x + x);
+		cqareBxy.SetPoint_X(x + x);
 		cqareBxy.SetPoint_Y(y - y);
-		cout <<"cqareBx "<< cqareBxy.GetPoint_x();
-		cout <<" cqareBy "<< cqareBxy.GetPoint_y() << endl;
+		cout << "cqareBx " << cqareBxy.GetPoint_x();
+		cout << " cqareBy " << cqareBxy.GetPoint_y() << endl;
 		std::cout << endl;
 		point cqareCxy;
-		cqareCxy.SetPoint_X (x + x);
-		cqareCxy.SetPoint_Y (y + y);
-		cout <<"cqareCx "<< cqareCxy.GetPoint_x();
-		cout <<" cqareCy "<< cqareCxy.GetPoint_y() << endl;
+		cqareCxy.SetPoint_X(x + x);
+		cqareCxy.SetPoint_Y(y + y);
+		cout << "cqareCx " << cqareCxy.GetPoint_x();
+		cout << " cqareCy " << cqareCxy.GetPoint_y() << endl;
 		std::cout << endl;
 		point cqareDxy;
-		cqareDxy.SetPoint_X (x - x);
-		cqareDxy.SetPoint_Y (y + y);
-		cout <<"cqareDx "<< cqareDxy.GetPoint_x() ;
-		cout <<" cqareDy "<< cqareDxy.GetPoint_y() << endl;
+		cqareDxy.SetPoint_X(x - x);
+		cqareDxy.SetPoint_Y(y + y);
+		cout << "cqareDx " << cqareDxy.GetPoint_x();
+		cout << " cqareDy " << cqareDxy.GetPoint_y() << endl;
 		std::cout << endl;
-
+	}
 		if(x>y)
 	{
 		r1 = abs(x1.GetPoint_x());
